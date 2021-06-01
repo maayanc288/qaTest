@@ -47,18 +47,13 @@ import com.springboot.springbootapp.service.ProductService;
 	        return ResponseEntity.ok().body(this.productService.updateProduct(product));
 	    }
 	    
-	    
-	    
-	    @PostMapping( value = "/update_quantity", consumes = "application/json", produces = "application/json")
-
-	    
-	    public ResponseEntity<Boolean> updateQuantity(@RequestBody Product product, @RequestBody long  newQuantity) {
-	        String ids = "f";
-	        return ResponseEntity.ok().body(this.productService.UpdateQuantity(ids,newQuantity));
+	   
+    
+	    @PutMapping("/update_quantity/{q}")
+	    public ResponseEntity<Boolean> updateProductQuantity(@PathVariable long q, @RequestBody Product product) {
+	        
+	        return ResponseEntity.ok().body(this.productService.UpdateQuantity(product.getId(), q));
 	    }
-	    
-	    
-	    
 	    
 	    
 	    //checked 

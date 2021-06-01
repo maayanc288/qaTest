@@ -16,8 +16,10 @@ public interface ProductService {
         
     void deleteProduct(String productCode);
 
-	boolean UpdateQuantity(String productId, long  changeInQuantity);
+//	boolean UpdateQuantity(String string, long  changeInQuantity);
 
 	int getProductQuantityByIdCode(String productCode);
+
+	boolean UpdateQuantity(long productId, long changeInQuantity);
 
 }

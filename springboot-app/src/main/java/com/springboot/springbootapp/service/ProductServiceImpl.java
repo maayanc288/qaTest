@@ -94,18 +94,18 @@ public class ProductServiceImpl implements ProductService {
 	
 
 	@Override
-	public boolean UpdateQuantity(String productId,long  changeInQuantity) {
-		Product product =  getProductFromDbByProductCode(productId);
-		boolean issucssess= false;
-		if (product ==  null) {
+	
+	public boolean UpdateQuantity(long  productId,long  changeInQuantity) {
+		boolean issucssess = false;
+		Product product =  getProductFromDbByProductId(productId);
+		if (product == null)throw new ResourceNotFoundException("Record not found with id : " + productId);
+		if (product !=  null) {
 			int quantity = product.getQuantity();
 			product.setQuantity(quantity += changeInQuantity);
 			issucssess = true;
-			return issucssess ;
 		}
-		else {
-			throw new ResourceNotFoundException("Record not found with id : " + productId);
-		}
+		return issucssess;
+		
 			
 			
 	}
